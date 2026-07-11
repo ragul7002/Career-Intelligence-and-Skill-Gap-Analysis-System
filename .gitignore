@@ -1,0 +1,44 @@
+# Environment variables / virtual envs
+venv/
+.env
+.env.local
+
+# Python files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Databases
+backend/db.sqlite3
+backend/db.sqlite3-journal
+
+# Logs
+*.log
+backend_output.log
+
+# Node dependencies and build folders
+node_modules/
+frontend/node_modules/
+frontend/dist/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# IDE settings
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Uploads
+backend/uploads/*.pdf
