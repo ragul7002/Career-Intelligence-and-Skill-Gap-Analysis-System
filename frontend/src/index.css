@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+body {
+  @apply bg-slate-50 text-slate-950 transition-colors duration-300 font-sans antialiased;
+}
+
+body.dark {
+  @apply bg-slate-950 text-slate-50;
+}
+
+/* Premium Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(203, 213, 225, 0.8); /* slate-300/80 */
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(148, 163, 184, 1); /* slate-400 */
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background-color: rgba(30, 41, 59, 0.8); /* slate-800/80 */
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(51, 65, 85, 1); /* slate-700 */
+}
+
+/* Glassmorphism Panels */
+.glass-panel {
+  @apply bg-white/70 backdrop-blur-md border border-slate-200/50 shadow-xl shadow-slate-100/40;
+}
+
+.dark .glass-panel {
+  @apply bg-slate-900/60 backdrop-blur-md border border-slate-800/40 shadow-2xl shadow-black/40;
+}
+
+/* Glassmorphism Cards */
+.glass-card {
+  @apply bg-white/60 backdrop-blur-md border border-slate-200/40 transition-all duration-300 shadow-md shadow-slate-100/30;
+}
+
+.glass-card:hover {
+  @apply border-primary-400/40 shadow-xl shadow-slate-200/40;
+}
+
+.dark .glass-card {
+  @apply bg-slate-900/45 backdrop-blur-md border border-slate-800/50 transition-all duration-300 shadow-lg shadow-black/20;
+}
+
+.dark .glass-card:hover {
+  @apply border-primary-500/30 shadow-2xl shadow-black/50;
+}
+
+/* Animated glow accents */
+.glow-accent-indigo {
+  @apply relative overflow-hidden;
+}
+
+.glow-accent-indigo::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  right: -100%;
+  bottom: -100%;
+  background: linear-gradient(to right, rgba(99, 102, 241, 0) 0%, rgba(99, 102, 241, 0.1) 50%, rgba(99, 102, 241, 0) 100%);
+  transform: rotate(45deg) translateX(-100%);
+  transition: transform 1s ease;
+}
+
+.glow-accent-indigo:hover::after {
+  transform: rotate(45deg) translateX(100%);
+}
+
+/* Circular ring helpers */
+.circle-bg {
+  fill: none;
+  stroke: #e2e8f0;
+}
+
+.dark .circle-bg {
+  stroke: #1e293b;
+}
+
+.animated-counter {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom Keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(4deg);
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.03);
+    opacity: 1;
+  }
+}
+
+@keyframes shine {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* Animation Classes */
+.animate-fade-in {
+  animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+/* Stagger delay helpers for items */
+.delay-75 { animation-delay: 75ms; }
+.delay-100 { animation-delay: 100ms; }
+.delay-150 { animation-delay: 150ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
+/* Fill mode so items stay hidden before animating */
+.animate-fade-in-up,
+.animate-fade-in,
+.animate-fade-in-down {
+  animation-fill-mode: both;
+}
+
+/* Shine gradient text */
+.shine-text {
+  background: linear-gradient(90deg, #6366f1, #ec4899, #6366f1);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shine 4s linear infinite;
+}
+
+/* Animated backgrounds */
+.bg-gradient-mesh {
+  background-image: radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
+                    radial-gradient(at 50% 0%, rgba(236, 72, 153, 0.08) 0px, transparent 50%),
+                    radial-gradient(at 100% 0%, rgba(20, 184, 166, 0.06) 0px, transparent 50%);
+}
+
+.dark .bg-gradient-mesh {
+  background-image: radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.05) 0px, transparent 50%),
+                    radial-gradient(at 50% 0%, rgba(236, 72, 153, 0.03) 0px, transparent 50%),
+                    radial-gradient(at 100% 0%, rgba(20, 184, 166, 0.02) 0px, transparent 50%);
+}
+
